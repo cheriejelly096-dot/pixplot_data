@@ -3618,7 +3618,9 @@ Welcome.prototype.removeLoader = function(onSuccess) {
     setTimeout(function(i) {
       blocks[i].style.animation = 'exit 300s';
       setTimeout(function(i) {
-        blocks[i].parentNode.removeChild(blocks[i]);
+        if (blocks[i] && blocks[i].parentNode) {
+    blocks[i].parentNode.removeChild(blocks[i]);
+}
         if (i == blocks.length-1) onSuccess();
       }.bind(this, i), 1000)
     }.bind(this, i), i*100)
